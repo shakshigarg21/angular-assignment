@@ -1,0 +1,33 @@
+<nav class="panel" *ngIf="users.length > 0; else noUsers">
+    <div class="panel-heading">
+      <p>User List</p>
+     
+    </div>
+    <div class="panel-block">
+      <table class="table is-fullwidth is-bordered">
+        <thead>
+           <th>Name</th> 
+          <th>Username</th>
+          <th>Email</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; index as i ">
+            <td>{{ user.name }}</td>
+            <td>{{ user.username }}</td>
+            <td appHighlighter>{{ user.email }}</td>
+            <td><button class="button is-danger" (click)="handleDeleteUser(i)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </nav>
+
+  <ng-template #noUsers>
+    <div class="columns">
+      <div class="column">
+        <p class="no-users tag">No Users Available.</p>
+      </div>
+    </div>
+  </ng-template>
+  
